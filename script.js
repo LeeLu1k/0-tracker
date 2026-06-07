@@ -1,5 +1,5 @@
-const orderPrice = 40;
-const hourly = 120;
+const hourRate = 120;
+const orderRate = 40;
 const goal = 30000;
 
 let shifts = JSON.parse(localStorage.getItem("shifts")) || [];
@@ -8,21 +8,29 @@ let total = JSON.parse(localStorage.getItem("total")) || 0;
 update();
 
 function addShift() {
-  let orders = document.getElementById("orders").value;
-  if (!orders) return;
+  let date = document.getElementById("date").value;
+  let hours = +document.getElementById("hours").value;
+  let orders = +document.getElementById("orders").value;
 
-  let income = (orders * orderPrice) + (7 * hourly);
+  if (!date || !hours || !orders) return;
 
+  let income = (hours * hourRate) + (orders * orderRate);
+
+  let shift = {
+    date,
+    hours,
+    orders,
+    income
+  };
+
+  shifts.push(shift);
   total += income;
-
-  shifts.push({
-    orders: orders,
-    income: income
-  });
 
   save();
   update();
 
+  document.getElementById("date").value = "";
+  document.getElementById("hours").value = "";
   document.getElementById("orders").value = "";
 }
 
@@ -35,14 +43,18 @@ function update() {
 
   document.getElementById("progress").style.width = percent + "%";
 
-  let list = document.getElementById("list");
-  list.innerHTML = "";
+  let history = document.getElementById("history");
+  history.innerHTML = "";
 
-  shifts.forEach((s, i) => {
+  shifts.slice().reverse().forEach(s => {
     let div = document.createElement("div");
-    div.className = "card";
-    div.innerHTML = `🚴 Смена ${i + 1}: ${s.orders} заказов → ${s.income} ₽`;
-    list.appendChild(div);
+    div.className = "item";
+    div.innerHTML = `
+      📅 ${s.date}<br>
+      ⏱ ${s.hours} часов | 🚴 ${s.orders} заказов<br>
+      💰 +${s.income} ₽
+    `;
+    history.appendChild(div);
   });
 }
 
@@ -51,12 +63,12 @@ function save() {
   localStorage.setItem("total", JSON.stringify(total));
 }
 
-function resetData() {
-  if (!confirm("Сбросить все данные?")) return;
+function resetAll() {
+  if (!confirm("Удалить ВСЁ? Это нельзя вернуть")) return;
 
+  localStorage.clear();
   shifts = [];
   total = 0;
 
-  save();
   update();
 }
