@@ -1,43 +1,52 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>30K PRO Tracker</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30K iOS Tracker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
+<div class="app">
 
-  <h1>💰 30K PRO Tracker</h1>
-  <p>Цель: 30 000 ₽ — поднятие в одиночку</p>
-
-  <div class="card">
-    <h2>Добавить смену</h2>
-
-    <input id="orders" type="number" placeholder="Количество заказов" />
-
-    <div class="row">
-      <button onclick="addShift()">➕ Добавить</button>
-      <button class="danger" onclick="resetData()">🗑 Сброс</button>
-    </div>
+  <div class="header">
+    <h1>💰 30K Tracker</h1>
+    <p>Путь к 30 000 ₽</p>
   </div>
 
   <div class="card">
-    <h2>Прогресс</h2>
+
+    <h2>Добавить смену</h2>
+
+    <input type="date" id="date">
+
+    <input type="number" id="hours" placeholder="Всего часов">
+
+    <input type="number" id="orders" placeholder="Количество заказов">
+
+    <button onclick="addShift()">Добавить смену</button>
+
+  </div>
+
+  <div class="card">
+
+    <h2>Общий прогресс</h2>
 
     <div class="bar">
       <div id="progress"></div>
     </div>
 
-    <p>Заработано: <span id="total">0</span> ₽</p>
-    <p>Осталось: <span id="left">30000</span> ₽</p>
+    <p>💰 Всего: <b id="total">0</b> ₽</p>
+    <p>🎯 Осталось: <b id="left">30000</b> ₽</p>
+
+    <button class="danger" onclick="resetAll()">Сбросить всё</button>
+
   </div>
 
   <div class="card">
-    <h2>Смены</h2>
-    <div id="list"></div>
+    <h2>История смен</h2>
+    <div id="history"></div>
   </div>
 
 </div>
