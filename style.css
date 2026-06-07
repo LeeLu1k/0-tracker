@@ -1,8 +1,8 @@
 body {
-  font-family: Arial;
-  background: #0f0f0f;
-  color: white;
   margin: 0;
+  font-family: Arial;
+  background: #0b0f14;
+  color: white;
 }
 
 .container {
@@ -13,28 +13,60 @@ body {
 
 h1 {
   text-align: center;
-  color: #00ff88;
+  color: #00ff99;
 }
 
 .card {
-  background: #1c1c1c;
+  background: #141b22;
   padding: 15px;
   margin-top: 15px;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 input {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
+  border-radius: 8px;
+  border: none;
 }
 
 button {
-  width: 100%;
   padding: 10px;
   margin-top: 10px;
-  background: #00ff88;
   border: none;
   cursor: pointer;
+  border-radius: 8px;
   font-weight: bold;
+  flex: 1;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  background: #00ff99;
+}
+
+.danger {
+  background: #ff3b3b;
+  color: white;
+}
+
+.bar {
+  width: 100%;
+  height: 15px;
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+#progress {
+  height: 100%;
+  width: 0%;
+  background: #00ff99;
+  transition: 0.3s;
 }
