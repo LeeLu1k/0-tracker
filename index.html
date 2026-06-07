@@ -3,34 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>30K Tracker</title>
+  <title>30K PRO Tracker</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-  <div class="container">
-    <h1>💰 30K Tracker</h1>
-    <p>Цель: накопить 30 000 ₽</p>
+<div class="container">
 
-    <div class="card">
-      <h2>Добавить смену</h2>
+  <h1>💰 30K PRO Tracker</h1>
+  <p>Цель: 30 000 ₽ — поднятие в одиночку</p>
 
-      <input type="number" id="orders" placeholder="Количество заказов" />
-      <button onclick="addShift()">Добавить</button>
+  <div class="card">
+    <h2>Добавить смену</h2>
+
+    <input id="orders" type="number" placeholder="Количество заказов" />
+
+    <div class="row">
+      <button onclick="addShift()">➕ Добавить</button>
+      <button class="danger" onclick="resetData()">🗑 Сброс</button>
     </div>
-
-    <div class="card">
-      <h2>Прогресс</h2>
-      <p>Всего заработано: <span id="total">0</span> ₽</p>
-      <p>До цели: <span id="left">30000</span> ₽</p>
-    </div>
-
-    <div id="list" class="card">
-      <h2>Смены</h2>
-    </div>
-
   </div>
 
-  <script src="script.js"></script>
+  <div class="card">
+    <h2>Прогресс</h2>
+
+    <div class="bar">
+      <div id="progress"></div>
+    </div>
+
+    <p>Заработано: <span id="total">0</span> ₽</p>
+    <p>Осталось: <span id="left">30000</span> ₽</p>
+  </div>
+
+  <div class="card">
+    <h2>Смены</h2>
+    <div id="list"></div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
