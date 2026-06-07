@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>30K Tracker</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="container">
+    <h1>💰 30K Tracker</h1>
+    <p>Цель: накопить 30 000 ₽</p>
+
+    <div class="card">
+      <h2>Добавить смену</h2>
+
+      <input type="number" id="orders" placeholder="Количество заказов" />
+      <button onclick="addShift()">Добавить</button>
+    </div>
+
+    <div class="card">
+      <h2>Прогресс</h2>
+      <p>Всего заработано: <span id="total">0</span> ₽</p>
+      <p>До цели: <span id="left">30000</span> ₽</p>
+    </div>
+
+    <div id="list" class="card">
+      <h2>Смены</h2>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
